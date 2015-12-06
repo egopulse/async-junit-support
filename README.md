@@ -6,30 +6,30 @@ JUnit doesn't support non-blocking testing out of the box. It will be pretty has
 
 # Sample
 
-```
-    // Declare Rule for Async
-    @Rule public AsyncRule async = AsyncRule.byAnnotations();
+```java
+// Declare Rule for Async
+@Rule public AsyncRule async = AsyncRule.byAnnotations();
 
-    // This test will fail as it's decorated with @Async annotation and it doesn't define the end state
-    // Async annotation comes with async-junit-support
-    @Test
-    @Async
-    public void simpleTest() {
-        Thread.sleep(9000);
-    }
+// This test will fail as it's decorated with @Async annotation and it doesn't define the end state
+// Async annotation comes with async-junit-support
+@Test
+@Async
+public void simpleTest() {
+    Thread.sleep(9000);
+}
 
-    // Statement of async.finished define operation has finished
-    @Test
-    @Async
-    public void anotherSimpleTest() {
-        async.finished();
-    }
+// Statement of async.finished define operation has finished
+@Test
+@Async
+public void anotherSimpleTest() {
+    async.finished();
+}
 
-    // Custom timeout (default timeunit is second). Test will be passed even though the default timeout is 5 seconds
-    @Test
-    @Async(6)
-    public void anotherNotSoSimpleTest() {
-        Thread.sleep(5000);
-        async.finished();
-    }
+// Custom timeout (default timeunit is second). Test will be passed even though the default timeout is 5 seconds
+@Test
+@Async(6)
+public void anotherNotSoSimpleTest() {
+    Thread.sleep(5000);
+    async.finished();
+}
 ```
