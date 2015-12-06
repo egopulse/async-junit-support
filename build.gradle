@@ -1,0 +1,16 @@
+group 'com.egopulse'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.jayway.awaitility:awaitility:1.7.0'
+    compile group: 'junit', name: 'junit', version: '4.11'
+}
